@@ -9,6 +9,19 @@ defmodule Strega.Account do
   alias Strega.Account.User
 
   @doc """
+  Returns the list of users.
+
+  ## Examples
+
+      iex> list_users()
+      [%User{}, ...]
+
+  """
+  def list_user do
+    Repo.all(User)
+  end
+
+  @doc """
   Gets a single user.
 
   Raises `Ecto.NoResultsError` if the User does not exist.
