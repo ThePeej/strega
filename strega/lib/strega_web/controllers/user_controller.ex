@@ -10,7 +10,7 @@ defmodule StregaWeb.UserController do
   end
 
   def new(conn, _params) do
-    changeset = Catalog.change_user(%User{})
+    changeset = Account.change_user(%User{})
     render(conn, "new.html", changeset: changeset)
   end
 
