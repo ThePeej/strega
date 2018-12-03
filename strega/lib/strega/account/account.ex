@@ -72,7 +72,7 @@ defmodule Strega.Account do
       {:error, %Ecto.Changeset{}}
 
   """
-  def delete_user(%{User} = user) do
+  def delete_user(%User{} = user) do
     Repo.delete(user)
   end
 
@@ -85,7 +85,7 @@ defmodule Strega.Account do
       %Ecto.Changeset{source: %User{}}
 
   """
-  def change_user(%{User} = user) do
+  def change_user(%User{} = user) do
     User.changeset(user, %{})
   end
 end
