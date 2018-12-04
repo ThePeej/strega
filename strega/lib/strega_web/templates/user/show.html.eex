@@ -9,7 +9,7 @@
 
   <li>
     <strong>Email:</strong>
-    <%= @user.quantity %>
+    <%= @user.email %>
   </li>
 
 </ul>

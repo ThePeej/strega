@@ -17,7 +17,7 @@ defmodule Strega.Account do
       [%User{}, ...]
 
   """
-  def list_user do
+  def list_users do
     Repo.all(User)
   end
 

@@ -1,3 +1,11 @@
 /* This file is for your main application css. */
 
 @import "./phoenix.css";
+
+tr {
+  text-align: right;
+}
+.crud-links {
+  margin: 3px;
+
+}
