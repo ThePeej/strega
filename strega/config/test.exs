@@ -16,3 +16,10 @@ config :strega, Strega.Repo,
   database: "strega_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
+
+# for faster testing: reduce number of rounds (as suggested by comeonin)
+# config :argon2_elixir,
+#   t_cost: 1,
+#   m_cost: 8
+# config :bcrypt_elixir, log_rounds: 4
+# config :pbkdf2_elixir, rounds: 1

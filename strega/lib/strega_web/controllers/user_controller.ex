@@ -3,7 +3,7 @@ defmodule StregaWeb.UserController do
 
   alias Strega.Account
   alias Strega.Account.User
-  
+
   def index(conn, _params) do
     users = Account.list_users()
     render(conn, "index.html", users: users)
@@ -14,7 +14,11 @@ defmodule StregaWeb.UserController do
     render(conn, "new.html", changeset: changeset)
   end
 
-  def create(conn, %{"user" => user_params}) do
+  def create(conn, %{"_csrf_token" => token, "user" => %{"email" => email, "name" => name}}) do
+    user_params = %{token: token, email: email, name: name}
+    IO.puts("+++++++++++++")
+    IO.inspect(user_params)
+    IO.puts("+++++++++++++")
     case Account.create_user(user_params) do
       {:ok, user} ->
         conn

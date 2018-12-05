@@ -4,9 +4,10 @@ defmodule Strega.Account do
   """
 
   import Ecto.Query, warn: false
-  alias Strega.Repo
 
+  alias Strega.Repo
   alias Strega.Account.User
+  alias Comeonin.Bcrypt
 
   @doc """
   Returns the list of users.
@@ -50,8 +51,12 @@ defmodule Strega.Account do
 
   """
   def create_user(attrs \\ %{}) do
+    IO.puts("+++++create user+++++")
+    IO.inspect(attrs)
+    IO.puts("+++++++++++++++++++++")
     %User{}
     |> User.changeset(attrs)
+    # |> add_hash()
     |> Repo.insert()
   end
 
