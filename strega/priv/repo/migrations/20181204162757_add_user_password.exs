@@ -3,7 +3,9 @@ defmodule Strega.Repo.Migrations.AddUserPassword do
 
   def change do
     alter table(:users) do
-      add :token, :string
+      add :password_hash, :string
     end
+    
+    create unique_index(:users, [:email])
   end
 end

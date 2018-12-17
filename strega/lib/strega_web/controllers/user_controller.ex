@@ -10,15 +10,11 @@ defmodule StregaWeb.UserController do
   end
 
   def new(conn, _params) do
-    changeset = Account.change_user(%User{})
+    changeset = Account.build_user()
     render(conn, "new.html", changeset: changeset)
   end
 
-  def create(conn, %{"_csrf_token" => token, "user" => %{"email" => email, "name" => name}}) do
-    user_params = %{token: token, email: email, name: name}
-    IO.puts("+++++++++++++")
-    IO.inspect(user_params)
-    IO.puts("+++++++++++++")
+  def create(conn, %{"user" => user_params}) do
     case Account.create_user(user_params) do
       {:ok, user} ->
         conn

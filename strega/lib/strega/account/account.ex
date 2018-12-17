@@ -39,6 +39,20 @@ defmodule Strega.Account do
   def get_user!(id), do: Repo.get!(User, id)
 
   @doc """
+  Returns an `%Ecto.Changeset{}` for tracking user changes.
+
+  ## Examples
+
+      iex> build_user(attr)
+      %Ecto.Changeset{source: %User{}}
+
+  """
+  def build_user(attr \\ %{}) do
+    %User{}
+    |> User.changeset(attr)
+  end
+
+  @doc """
   Creates a user.
 
   ## Examples
@@ -50,13 +64,9 @@ defmodule Strega.Account do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_user(attrs \\ %{}) do
-    IO.puts("+++++create user+++++")
-    IO.inspect(attrs)
-    IO.puts("+++++++++++++++++++++")
-    %User{}
-    |> User.changeset(attrs)
-    # |> add_hash()
+  def create_user(attrs) do
+    attrs
+    |> build_user()
     |> Repo.insert()
   end
 
@@ -92,18 +102,5 @@ defmodule Strega.Account do
   """
   def delete_user(%User{} = user) do
     Repo.delete(user)
-  end
-
-  @doc """
-  Returns an `%Ecto.Changeset{}` for tracking user changes.
-
-  ## Examples
-
-      iex> change_user(user)
-      %Ecto.Changeset{source: %User{}}
-
-  """
-  def change_user(%User{} = user) do
-    User.changeset(user, %{})
   end
 end
